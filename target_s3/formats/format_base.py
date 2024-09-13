@@ -63,11 +63,11 @@ class FormatBase(metaclass=ABCMeta):
                 endpoint_url=aws_config.get("aws_endpoint_override", None),
             )
 
-        steam_name: str = self.context["stream_name"]
+        stream_name: str = self.context["stream_name"]
         self.prefix = config.get("prefix", "")
         self.logger = context["logger"]
         self.fully_qualified_key = (
-            PurePosixPath(self.bucket, self.prefix, steam_name)
+            PurePosixPath(self.bucket, self.prefix, stream_name)
             if config.get("use_raw_stream_name")
             else self.create_key()
         )
